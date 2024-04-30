@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorySpeakV3", "StorySpeakV3\StorySpeakV3.csproj", "{F02B08E8-A498-4413-892C-FC7EE052D03A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F02B08E8-A498-4413-892C-FC7EE052D03A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F02B08E8-A498-4413-892C-FC7EE052D03A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F02B08E8-A498-4413-892C-FC7EE052D03A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F02B08E8-A498-4413-892C-FC7EE052D03A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9CE244B3-A328-4458-974D-76AE1FB8B754}
+	EndGlobalSection
+EndGlobal
