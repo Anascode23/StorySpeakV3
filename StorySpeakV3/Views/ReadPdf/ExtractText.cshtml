@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Extracted Text";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.TextContent))
+{
+    <div>
+        <button onclick="convertTextToSpeech()">Convert to Audio</button>
+        <br />
+        <br />
+        <button onclick="pause()">Pause</button>
+        <button onclick="resume()">Resume</button>
+        <p>Extracted Text:</p>
+        <pre>@Html.Raw(ViewBag.TextContent)</pre>
+    </div>
+}
+else
+{
+    <p>No text extracted.</p>
+}
+
+
+<script>
+    function convertTextToSpeech() {
+        var extractedText = "@ViewBag.TextContent";
+
+        $.ajax({
+            url: '@Url.Action("TextToSpeech", "ReadPdf")',
+            method: 'POST',
+            data: { text: extractedText },
+            success: function (response) {
+                responsiveVoice.speak(response.cleanedText, "US English Female");
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
+
+
+    function pause() {
+        responsiveVoice.pause();
+    }
+    function resume() {
+        responsiveVoice.resume();
+    }
+</script>
