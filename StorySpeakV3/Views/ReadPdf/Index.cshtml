@@ -1,4 +1,23 @@
-﻿<form enctype="multipart/form-data" method="post" asp-controller="ReadPdf" asp-action="ExtractText">
-    <input type="file" name="pdfFile" />
+﻿@{
+    ViewData["Title"] = "Upload PDF";
+}
+
+<h2>Upload PDF</h2>
+
+<form enctype="multipart/form-data" method="post" asp-controller="ReadPdf" asp-action="ExtractText">
+    <input type="file" name="pdfFile" accept=".pdf" required />
     <button type="submit">Upload PDF</button>
 </form>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div style="color: red;">
+        <strong>Error:</strong> @ViewBag.ErrorMessage
+    </div>
+}
+
+@if (ViewBag.TextContent != null)
+{
+    <h3>Extracted Text</h3>
+    <pre>@ViewBag.TextContent</pre>
+}

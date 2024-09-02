@@ -13,23 +13,32 @@ namespace StorySpeak.Controllers
         {
             return View();
         }
-        [HttpPost]
+
+        [HttpPost("upload")]
         public IActionResult ExtractText(IFormFile pdfFile)
         {
             if (pdfFile != null && pdfFile.Length > 0)
             {
                 using (PdfReader reader = new PdfReader(pdfFile.OpenReadStream()))
                 {
+                    reader.SelectPages("5-33");
                     using (StringWriter textContent = new StringWriter())
                     {
                         for (int i = 1; i <= reader.NumberOfPages; i++)
                         {
                             string pageText = PdfTextExtractor.GetTextFromPage(reader, i);
-                            pageText = CleanText(pageText);
+                            //pageText = CleanText(pageText);
                             textContent.WriteLine(pageText);
                         }
                         string text = textContent.ToString();
-                        ViewBag.TextContent = text;
+
+                        // Tokenize the extracted and cleaned text
+                        string[] tokens = TokenizeText(text);
+
+                        // Combine tokens into a single string for displaying
+                        ViewBag.TextContent = string.Join(" ", tokens);
+
+                        // Return a view that displays the content
                         return View();
                     }
                 }
@@ -71,6 +80,24 @@ namespace StorySpeak.Controllers
 
             return text;
         }
+
+        // ** Remove TokenizeText method because it does nothing to solve the problem of make a coherent sentences **
+        private string[] TokenizeText(string text)
+        {
+            // Define delimiters (e.g., space, period, comma)
+            char[] delimiters = [' ', '.', ','];
+
+            // Tokenize the text
+            string[] tokens = text.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+
+            return tokens;
+        }
+
+
+
+
+
+
 
     }
 }

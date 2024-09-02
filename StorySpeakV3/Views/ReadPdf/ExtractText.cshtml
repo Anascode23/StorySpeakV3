@@ -13,7 +13,7 @@
         <button onclick="pause()">Pause</button>
         <button onclick="resume()">Resume</button>
         <p>Extracted Text:</p>
-        <pre>@Html.Raw(ViewBag.TextContent)</pre>
+        <pre>@Html.Encode(ViewBag.TextContent)</pre>
     </div>
 }
 else
@@ -21,10 +21,9 @@ else
     <p>No text extracted.</p>
 }
 
-
 <script>
     function convertTextToSpeech() {
-        var extractedText = "@ViewBag.TextContent";
+        var extractedText = @Html.Raw(Json.Serialize(ViewBag.TextContent));
 
         $.ajax({
             url: '@Url.Action("TextToSpeech", "ReadPdf")',
@@ -39,12 +38,12 @@ else
         });
     }
 
-
-
     function pause() {
         responsiveVoice.pause();
     }
+
     function resume() {
         responsiveVoice.resume();
     }
 </script>
+
