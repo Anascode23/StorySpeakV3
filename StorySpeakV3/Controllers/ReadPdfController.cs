@@ -85,7 +85,7 @@ namespace StorySpeak.Controllers
         private string[] TokenizeText(string text)
         {
             // Define delimiters (e.g., space, period, comma)
-            char[] delimiters = [' ', '.', ','];
+            char[] delimiters = [];
 
             // Tokenize the text
             string[] tokens = text.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
