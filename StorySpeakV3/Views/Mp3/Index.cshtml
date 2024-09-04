@@ -1,21 +1,20 @@
 ﻿@*
-  -  basic structure of the mp3 player with HTML ONLY (Done)
-  -  connect the play and pause buttons from responsivevoice API
+  -  basic structure of the mp3 player with HTML ONLY (Done) CSS (Done)
+  -  when the play button is pressed change it with js to pause button
+  -  connect the play and pause buttons from responsivevoice API 
   -  remove the extracted text from the ExtracText.cshtml file
-  -
 *@
 <h1>Testing Player</h1>
 
+
 <div id="main" class="container">    
     <div id="controls">
-        <button id="previous" onclick="prevSong()">
-            <i class="fas fa-step-backward"></i>
-        </button>
-        <button id="play">
+
+        <button class=".button" id="play" onclick="convertTextToSpeech()">
             <i class="fas fa-solid fa-play"></i>
         </button>
-        <button id="next" onclick="nextSong()">
-            <i class="fas fa-step-forward"></i>
+        <button class=".button" id="pause" onclick="pause()">
+            <i class="fas fa-sharp fa-solid fa-pause"></i>
         </button>
     </div>
 </div>
