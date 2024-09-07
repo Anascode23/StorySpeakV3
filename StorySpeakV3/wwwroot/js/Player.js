@@ -1,6 +1,21 @@
-﻿let playing = false;
-let play_pause_btn = document.getElementById("play");
-let currentPos, newPos, startPos = 0;
+﻿let songs = [
+    {
+        song_name: "One More Time",
+        artist: "Daft Punk",
+        url: "./songs/onemoretime.mp3"
+    }
+];
 
+let audioPlayer = document.getElementById('audio-player');
+let songNameElement = document.getElementById('song-name');
+let artistElement = document.getElementById('artist');
 
-
+// Function to load song
+window.onload = function () {
+    loadSong(songs[0])
+}
+function loadSong(song) {
+    songNameElement.textContent = song.song_name;
+    artistElement.textContent = song.artist;
+    audioPlayer.src = song.url;
+}
