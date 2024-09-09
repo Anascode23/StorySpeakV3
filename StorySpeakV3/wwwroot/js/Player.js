@@ -19,3 +19,13 @@ function loadSong(song) {
     artistElement.textContent = song.artist;
     audioPlayer.src = song.url;
 }
+
+// Play button triggers TTS
+//document.getElementById('play-btn').addEventListener('click', function () {
+//    responsiveVoice.speak(extractedText, "UK English Male");
+//});
+
+// Pause button stops TTS
+//document.getElementById('pause-btn').addEventListener('click', function () {
+//    responsiveVoice.cancel();
+//});
