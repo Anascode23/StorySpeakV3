@@ -2,7 +2,7 @@
 $.ajax({
     url: '/Readpdf',  // Make sure this matches your route in C# controller
     type: 'POST',
-    data: formData,
+    data: { text: extractedText },
     contentType: false,  // Needed for file upload
     processData: false,  // Prevents jQuery from processing the data
     success: function (response) {
