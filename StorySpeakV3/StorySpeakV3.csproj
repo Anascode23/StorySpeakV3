@@ -10,4 +10,11 @@
     <PackageReference Include="iTextSharp" Version="5.5.13.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\js\Audioplayer.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

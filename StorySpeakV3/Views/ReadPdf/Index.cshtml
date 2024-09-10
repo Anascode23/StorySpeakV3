@@ -4,6 +4,10 @@
 
 <h2>Upload PDF</h2>
 
+@section Scripts {
+    <script src="~/js/Audioplayer.js"></script>
+}
+
 <form enctype="multipart/form-data" method="post" asp-controller="ReadPdf" asp-action="ExtractText">
     <input type="file" name="pdfFile" accept=".pdf" required />
     <button type="submit">Upload PDF</button>
@@ -20,3 +24,4 @@
 { 
     <pre>@ViewBag.TextContent</pre>
 }
+
