@@ -1,27 +1,12 @@
-﻿@{
-    ViewData["Title"] = "Upload PDF";
-}
+﻿<h1>PDF Upload and MP3 Player</h1>
 
+
+<!-- PDF Upload Section -->
 <h2>Upload PDF</h2>
-
-@section Scripts {
-    <script src="~/js/Audioplayer.js"></script>
-}
 
 <form enctype="multipart/form-data" method="post" asp-controller="ReadPdf" asp-action="ExtractText">
     <input type="file" name="pdfFile" accept=".pdf" required />
     <button type="submit">Upload PDF</button>
 </form>
 
-@if (ViewBag.ErrorMessage != null)
-{
-    <div style="color: red;">
-        <strong>Error:</strong> @ViewBag.ErrorMessage
-    </div>
-}
-
-@if (ViewBag.TextContent != null)
-{ 
-    <pre>@ViewBag.TextContent</pre>
-}
 

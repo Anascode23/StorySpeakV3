@@ -78,6 +78,8 @@ namespace StorySpeak.Controllers
             text = Regex.Replace(text, @"[^\w\s]", ""); // Remove non-alphanumeric characters
             text = Regex.Replace(text, @"\s+", " ");   // Replace multiple whitespaces with a single space
 
+            text = Regex.Replace(text, @"\b[A-Z\s]{3,}\b", ""); // Remove lines with uppercase letters (optional)
+
             return text;
         }
 

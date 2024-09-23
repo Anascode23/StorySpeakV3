@@ -1,25 +1,44 @@
-﻿<h2>@ViewData["Title"]</h2>
+﻿<!-- MP3 Player Section -->
+<div id="player">
+    <h2 id="song-name">Text-to-Speech</h2>
+    <p id="artist">ResponsiveVoice TTS</p>
+    <audio controls id="audio-player" ></audio>
+    <button onclick="pause()">Pause</button>
+    <button onclick="resume()">Resume</button>
+</div>
 
-@if (!string.IsNullOrEmpty(ViewBag.TextContent))
+<!-- Display Error Message -->
+@if (ViewBag.ErrorMessage != null)
 {
-    <form>              
-        <button type="button" onclick="pauseh()">Pause Speech</button>
-        <button type="button" onclick="resume()">Resume Speech</button>
-    </form>
-
+    <div style="color: red;">
+        <strong>Error:</strong> @ViewBag.ErrorMessage
+    </div>
 }
 
-@section Scripts {
-    <script src="~/js/Audioplayer.js"></script>
+
+
+@section Scripts {   
+
+    <!-- Add the ResponsiveVoice script for Text-to-Speech functionality -->
+    <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+
+    <script>
+        // When a PDF is uploaded and text is extracted, trigger the TTS with the extracted text
+        $(document).ready(function () {
+            var extractedText = '@ViewBag.TextContent';  // Assuming the extracted text is in ViewBag.TextContent
+
+            if (extractedText) {
+                // Automatically play the extracted text through the MP3 player using ResponsiveVoice
+                responsiveVoice.speak(extractedText, "US English Female");
+            }
+        });
+
+
+        function pause() {
+            responsiveVoice.pause();
+        }
+        function resume() {
+            responsiveVoice.resume();
+        }
+    </script>
 }
-<script>
-
-    function pause() {
-        responsiveVoice.pause();
-    }
-
-    function resume() {
-        responsiveVoice.resume();
-    }
-</script>
-    

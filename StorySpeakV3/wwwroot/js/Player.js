@@ -11,14 +11,14 @@ let songNameElement = document.getElementById('song-name');
 let artistElement = document.getElementById('artist');
 
 // Function to load song
-window.onload = function () {
-    loadSong(songs[0])
-}
-function loadSong(song) {
-    songNameElement.textContent = song.song_name;
-    artistElement.textContent = song.artist;
-    audioPlayer.src = song.url;
-}
+//window.onload = function () {
+//    loadSong(songs[0])
+//}
+//function loadSong(song) {
+//    songNameElement.textContent = song.song_name;
+//    artistElement.textContent = song.artist;
+//    audioPlayer.src = song.url;
+//}
 
 // Play button triggers TTS
 //document.getElementById('play-btn').addEventListener('click', function () {
