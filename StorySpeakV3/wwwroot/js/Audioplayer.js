@@ -4,9 +4,9 @@ $.ajax({
     type: 'POST',
     data: { text: extractedText },
     contentType: false,  // Needed for file upload
-    processData: false,  // Prevents jQuery from processing the data
+    processData: false,
     success: function (response) {
-        // Now send the extracted text for TTS
+
         convertTextToSpeech(response);
     },
     error: function (xhr, status, error) {
@@ -14,14 +14,14 @@ $.ajax({
     }
 });
 
-// Function to trigger TTS using responsiveVoice.js
+
 function convertTextToSpeech(text) {
     $.ajax({
-        url: '@Url.Action("TextToSpeech", "ReadPdf")',  // Adjust to your correct route
+        url: '@Url.Action("TextToSpeech", "ReadPdf")',
         method: 'POST',
         data: { text: text },
         success: function (response) {
-            // Trigger the TTS system to speak the cleaned text
+
             responsiveVoice.speak(response.cleanedText, "US English Female");
         }
 

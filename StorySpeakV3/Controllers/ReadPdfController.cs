@@ -27,18 +27,18 @@ namespace StorySpeak.Controllers
                         for (int i = 1; i <= reader.NumberOfPages; i++)
                         {
                             string pageText = PdfTextExtractor.GetTextFromPage(reader, i);
-                            //pageText = CleanText(pageText);
+
                             textContent.WriteLine(pageText);
                         }
                         string text = textContent.ToString();
 
-                        // Tokenize the extracted and cleaned text
+
                         string[] tokens = TokenizeText(text);
 
-                        // Combine tokens into a single string for displaying
+
                         ViewBag.TextContent = string.Join(" ", tokens);
 
-                        // Return a view that displays the content
+
                         return View();
                     }
                 }
@@ -62,34 +62,33 @@ namespace StorySpeak.Controllers
             return Json(new { cleanedText = text });
         }
 
-        // Method to clean the text (optional)
+
         private string CleanText(string text)
         {
-            // Decode HTML entities
+
             text = WebUtility.HtmlDecode(text);
 
-            // Decode XML entities
+
             text = XmlConvert.DecodeName(text);
 
-            // Replace newline characters with a space
+
             text = text.Replace("\n", " ");
 
-            // Remove non-alphanumeric characters and normalize whitespace
-            text = Regex.Replace(text, @"[^\w\s]", ""); // Remove non-alphanumeric characters
-            text = Regex.Replace(text, @"\s+", " ");   // Replace multiple whitespaces with a single space
 
-            text = Regex.Replace(text, @"\b[A-Z\s]{3,}\b", ""); // Remove lines with uppercase letters (optional)
+            text = Regex.Replace(text, @"[^\w\s]", "");
+            text = Regex.Replace(text, @"\s+", " ");
+
+            text = Regex.Replace(text, @"\b[A-Z\s]{3,}\b", "");
 
             return text;
         }
 
-        // ** Remove TokenizeText method because it does nothing to solve the problem of make a coherent sentences **
+
         private string[] TokenizeText(string text)
         {
-            // Define delimiters (e.g., space, period, comma)
+
             char[] delimiters = [];
 
-            // Tokenize the text
             string[] tokens = text.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
 
             return tokens;
